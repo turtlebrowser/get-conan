@@ -1,0 +1,25 @@
+name: 'Get Conan'
+description: 'Installs Conan'
+author: 'TurtleBrowser'
+outputs:
+  version:
+    description: "The version of Conan which was installed"
+    value: ${{ steps.output_version.outputs.version }}
+runs:
+  using: "composite"
+  steps:
+    - name: Install on Mac/Linux/Windows
+      run: |
+        pip3 install wheel setuptools
+        pip3 install conan --upgrade
+      shell: bash
+    - name: Fix path on Linux
+      run: echo "/home/runner/.local/bin" >> $GITHUB_PATH
+      shell: bash
+    - name: Fill in output variable
+      id: output_version
+      shell: bash
+      run: echo "::set-output name=version::$(conan --version)"
+branding:
+  icon: "archive"
+  color: "green"
