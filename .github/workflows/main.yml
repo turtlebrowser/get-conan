@@ -20,4 +20,4 @@ jobs:
         uses: ./ # Uses an action in the root directory
 
       - name: Did we get Conan?
-        run: echo "Conan version was ${{ steps.conan.outputs.version }}"
+        run: echo "Conan version was '${{ steps.conan.outputs.version }}'"
