@@ -16,12 +16,13 @@ runs:
     - name: Fix path on Linux
       run: |
         echo "/home/runner/.local/bin" >> $GITHUB_PATH
-        conan --version
       shell: bash
     - name: Fill in output variable
       id: output_version
       shell: bash
-      run: echo "::set-output name=version::$(conan --version)"
+      run: |
+        conan --version
+        echo "::set-output name=version::$(conan --version)"
 branding:
   icon: "archive"
   color: "green"
