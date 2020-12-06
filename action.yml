@@ -12,6 +12,7 @@ runs:
       run: |
         pip3 install wheel setuptools
         pip3 install conan --upgrade
+        conan --version
       shell: bash
     - name: Fix path on Linux
       run: echo "/home/runner/.local/bin" >> $GITHUB_PATH
