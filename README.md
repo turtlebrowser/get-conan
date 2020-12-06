@@ -1,3 +1,4 @@
+![CI](https://github.com/turtlebrowser/get-conan/workflows/CI/badge.svg)
 # Get Conan GitHub Action
 
 Gets the most recent Conan
