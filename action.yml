@@ -1,6 +1,11 @@
 name: 'Get Conan'
 description: 'Installs Conan'
 author: 'TurtleBrowser'
+inputs:
+  version:
+    description: "Wanted conan version"
+    required: false
+    default: ''
 outputs:
   version:
     description: "The version of Conan which was installed"
@@ -8,10 +13,16 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - name: Install on Mac/Linux/Windows
-      run: |
-        pip3 install wheel setuptools
-        pip3 install conan --upgrade
+    - name: Install setup tools
+      run: pip3 install wheel setuptools
+      shell: bash
+    - name: Install conan latest
+      if: ${{ inputs.version == '' }}
+      run: pip3 install conan --upgrade
+      shell: bash
+    - name: Install conan version ${{ inputs.version }}
+      if: ${{ inputs.version != '' }}
+      run: pip3 install conan==${{ inputs.version }} --upgrade
       shell: bash
     - name: Fix path on Linux
       run: |
@@ -26,3 +37,7 @@ runs:
 branding:
   icon: "archive"
   color: "green"
+
+
+
+
