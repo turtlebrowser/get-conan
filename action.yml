@@ -33,7 +33,7 @@ runs:
       shell: bash
       run: |
         conan --version
-        echo "::set-output name=version::$(conan --version)"
+        echo "version=$(conan --version)" >> $GITHUB_OUTPUT
 branding:
   icon: "archive"
   color: "green"
