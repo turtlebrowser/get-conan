@@ -28,7 +28,7 @@ runs:
       run: |
         echo "/home/runner/.local/bin" >> $GITHUB_PATH
       shell: bash
-    - name: Fix path on Mac
+    - name: Fix path on MacOS
       run: |
         echo "${PATH}/Library/Python/3.9/bin" >> $GITHUB_PATH
       shell: bash
