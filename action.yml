@@ -28,6 +28,10 @@ runs:
       run: |
         echo "/home/runner/.local/bin" >> $GITHUB_PATH
       shell: bash
+    - name: Fix path on Mac
+      run: |
+        echo "${PATH}/Library/Python/3.9/bin" >> $GITHUB_PATH
+      shell: bash
     - name: Fill in output variable
       id: output_version
       shell: bash
